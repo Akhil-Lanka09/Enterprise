@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brown: #8B5E3C;
+  --color-brown-dark: #6B4423;
+  --color-brown-light: #A87850;
+  --color-beige: #F5F5F5;
+  --color-beige-deep: #EDE5D8;
+  --color-white: #FFFFFF;
+  --color-text: #2C1810;
+  --color-text-muted: #7A6355;
+
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Poppins", sans-serif;
+
+  --shadow-soft: 0 4px 16px rgba(139, 94, 60, 0.07);
+  --shadow-hover: 0 24px 48px rgba(139, 94, 60, 0.15);
+  
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-white);
+    color: var(--color-text);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-beige);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-brown);
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brown text-white font-sans font-semibold text-[15px] px-8 py-[14px] rounded-full transition-all duration-250 tracking-wide;
+  }
+  .btn-primary:hover {
+    @apply bg-brown-dark scale-105 shadow-[0_8px_24px_rgba(139,94,60,0.35)];
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-brown border-2 border-brown font-sans font-semibold text-[15px] px-8 py-[13px] rounded-full transition-all duration-250;
+  }
+  .btn-outline:hover {
+    @apply bg-brown text-white scale-105;
+  }
+
+  .btn-white {
+    @apply bg-white text-brown font-sans font-semibold text-[15px] px-8 py-[14px] rounded-full transition-all duration-250;
+  }
+  .btn-white:hover {
+    @apply bg-beige scale-105 shadow-[0_8px_24px_rgba(0,0,0,0.15)];
+  }
+
+  .tag {
+    @apply inline-block bg-[#F0E8DC] text-brown px-4 py-1.5 rounded-full text-[13px] font-semibold tracking-wide uppercase;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] cursor-pointer;
+  }
+  .card-hover:hover {
+    @apply -translate-y-2 shadow-hover;
+  }
+  .card-hover:hover img {
+    @apply scale-105;
+  }
+
+  .form-input {
+    @apply w-full px-[18px] py-[14px] border-[1.5px] border-[#E0D5C8] rounded-xl font-sans text-[15px] text-text bg-white transition-colors duration-200 outline-none;
+  }
+  .form-input:focus {
+    @apply border-brown shadow-[0_0_0_3px_rgba(139,94,60,0.1)];
+  }
+
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, #FAF7F2 0%, #F0E8DC 50%, #FAF7F2 100%);
+  }
+}
