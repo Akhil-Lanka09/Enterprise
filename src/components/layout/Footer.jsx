@@ -12,7 +12,7 @@ export default function Footer() {
                 <Package className="text-white w-5 h-5" />
               </div>
               <span className="font-display text-xl font-bold tracking-tight">
-                The Box Hub
+                SVK PACKAGING
               </span>
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-sm">
@@ -65,8 +65,8 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               {[
                 { icon: Phone, text: "+91 98765 43210" },
-                { icon: Mail, text: "hello@theboxhub.in" },
-                { icon: MapPin, text: "Vissannapeta, AP 521215" },
+                { icon: Mail, text: "hello@svkpackaging.in" },
+                { icon: MapPin, text: "Manufacturer in Viravalli, Andhra Pradesh" },
                 { icon: Clock, text: "Mon–Sat, 9am–7pm" },
               ].map((item, i) => (
                 <div key={i} className="flex gap-3 items-center text-white/65 text-sm">
@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
-          <p>© {new Date().getFullYear()} The Box Hub. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} SVK PACKAGING. All rights reserved.</p>
           <div className="flex gap-6">
             <span className="hover:text-white cursor-pointer">Privacy Policy</span>
             <span className="hover:text-white cursor-pointer">Terms of Service</span>

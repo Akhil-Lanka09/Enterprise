@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { products } from "../data/products";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -8,19 +9,10 @@ const fadeUp = {
 };
 
 export default function Products() {
-  const products = [
-    { title: "Corrugated Shipping Box", desc: "Heavy-duty double-wall corrugated boxes for safe long-distance shipping. Available in B, C, E flute variants.", tag: "Shipping", img: "/images/cat_shipping_1776242687272.png" },
-    { title: "Food Packaging Box", desc: "Food-safe, grease-resistant carton boxes for bakeries, restaurants, and packaged food brands.", tag: "Food", img: "/images/cat_food_1776242671878.png" },
-    { title: "Bottle Carrier Box", desc: "Secure multi-cell bottle carriers for beverages, oils, and sauces. Fits 2 to 12 units.", tag: "Bottle", img: "/images/cat_bottle_1776243453767.png" },
-    { title: "Luxury Gift Box", desc: "Premium rigid and folding gift boxes with custom foil stamping, embossing, and ribbon closures.", tag: "Gift", img: "/images/cat_gift_1776242702728.png" },
-    { title: "E-Commerce Mailer Box", desc: "Self-sealing, print-ready mailer boxes ideal for D2C brands with unboxing experience in mind.", tag: "eCommerce", img: "/images/cat_ecommerce_1776243551646.png" },
-    { title: "Retail Counter Box", desc: "Compact display-ready boxes for retail shelves with vibrant CMYK printing and die-cut windows.", tag: "Retail", img: "/images/hero_boxes_1776242635107.png" },
-    { title: "Pharma & Medicine Box", desc: "Compliant pharmaceutical folding cartons with accurate printing for dosage and safety labeling.", tag: "Pharma", img: "/images/cat_pharma_1776243439191.png" },
-    { title: "Industrial Bulk Box", desc: "High-strength bulk cartons for warehousing and industrial product storage and transport.", tag: "Industrial", img: "/images/cat_shipping_1776242687272.png" },
-  ];
+  // Products imported from data/products.js
 
   const [filter, setFilter] = useState("All");
-  const tags = ["All", "Shipping", "Food", "Bottle", "Gift", "eCommerce", "Retail", "Pharma", "Industrial"];
+  const tags = ["All", "Shipping", "Food", "Bottle", "eCommerce", "Retail", "Pharma", "Industrial", "Protection"];
   const filtered = filter === "All" ? products : products.filter(p => p.tag === filter);
 
   return (
@@ -81,26 +73,28 @@ export default function Products() {
                   transition={{ duration: 0.35 }}
                   className="card-hover bg-white rounded-2xl border border-[#E0D5C8] overflow-hidden flex flex-col"
                 >
-                  <div className="h-48 overflow-hidden bg-beige">
+                  <Link to={`/products/${p.slug}`} className="h-48 overflow-hidden bg-beige block">
                     <img src={p.img} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
-                  </div>
+                  </Link>
                   <div className="p-6 flex flex-col flex-1">
                     <div className="mb-3">
                       <span className="bg-[#F0E8DC] text-brown px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase">
                         {p.tag}
                       </span>
                     </div>
-                    <h3 className="text-[15px] font-bold text-text mb-2 leading-[1.35]">
-                      {p.title}
-                    </h3>
+                    <Link to={`/products/${p.slug}`}>
+                      <h3 className="text-[15px] font-bold text-text mb-2 leading-[1.35] hover:text-brown transition-colors">
+                        {p.title}
+                      </h3>
+                    </Link>
                     <p className="text-[13px] text-text-muted leading-relaxed mb-5 flex-1">
                       {p.desc}
                     </p>
                     <Link
-                      to="/contact"
+                      to={`/products/${p.slug}`}
                       className="btn-primary py-2.5 px-4 text-[13px] w-full text-center"
                     >
-                      Request Quote
+                      View Details
                     </Link>
                   </div>
                 </motion.div>

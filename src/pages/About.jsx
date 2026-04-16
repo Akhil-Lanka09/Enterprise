@@ -38,7 +38,7 @@ export default function About() {
         >
           <span className="tag bg-white/20 text-white backdrop-blur-md border border-white/10 mb-4">Our Story</span>
           <h1 className="font-display text-[clamp(32px,5vw,58px)] font-bold text-white tracking-tight leading-tight">
-            About The Box Hub
+            About SVK PACKAGING
           </h1>
           <p className="text-white/80 text-[17px] mt-4 leading-relaxed">
             Crafting packaging that goes beyond containment — we build brand experiences from the first unbox.
@@ -60,7 +60,7 @@ export default function About() {
               Built on Craft,<br />Driven by Quality
             </h2>
             <p className="text-text-muted leading-relaxed mb-5 text-[15px]">
-              The Box Hub was founded with a singular vision: to deliver packaging solutions that protect your products and amplify your brand. We specialize in custom-designed carton boxes across food, gifting, e-commerce, and industrial segments.
+              SVK PACKAGING was founded with a singular vision: to deliver packaging solutions that protect your products and amplify your brand. We specialize in custom-designed carton boxes across food, gifting, e-commerce, and industrial segments.
             </p>
             <p className="text-text-muted leading-relaxed mb-8 text-[15px]">
               Our state-of-the-art manufacturing facility uses FSC-certified materials and advanced printing technology to bring your brand vision to life — with accuracy, speed, and care.
@@ -162,7 +162,7 @@ export default function About() {
             <img src="/images/founder.jpg" alt="Pradeep Maganti - Founder" className="w-full h-[115%] object-cover object-top -translate-y-[5%]" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8 text-white z-10">
               <div className="font-display text-[28px] font-semibold text-white">Pradeep Maganti</div>
-              <div className="text-white/80 text-[15px] mt-1 font-medium tracking-wide">Founder & CEO, The Box Hub</div>
+              <div className="text-white/80 text-[15px] mt-1 font-medium tracking-wide">Founder & CEO, SVK PACKAGING</div>
             </div>
           </motion.div>
           
@@ -179,10 +179,10 @@ export default function About() {
             </h2>
             <div className="text-brown font-semibold mb-5 text-[15px]">Founder & Managing Director</div>
             <p className="text-text-muted leading-relaxed mb-4 text-[15px]">
-              With over 7 years steeped in industrial print and structural design, Pradeep founded The Box Hub in 2019. He saw a massive gap where premium, structurally flawless packaging was only accessible to enterprise corporations, leaving ambitious startups behind.
+              With over 7 years steeped in industrial print and structural design, Pradeep founded SVK PACKAGING in 2019. He saw a massive gap where premium, structurally flawless packaging was only accessible to enterprise corporations, leaving ambitious startups behind.
             </p>
             <p className="text-text-muted leading-relaxed mb-4 text-[15px]">
-              Starting in a modest workshop with a single die-cutting machine, his philosophy that "packaging is the ultimate silent salesman" struck a chord. Today, The Box Hub operates an advanced manufacturing facility driven by Pradeep's original vision: uncompromising aesthetic precision combined with unbreakable strength.
+              Starting in a modest workshop with a single die-cutting machine, his philosophy that "packaging is the ultimate silent salesman" struck a chord. Today, SVK PACKAGING operates an advanced manufacturing facility driven by Pradeep's original vision: uncompromising aesthetic precision combined with unbreakable strength.
             </p>
             <p className="text-text-muted leading-relaxed mb-7 text-[15px] italic">
               "Every box we crease and fold carries the soul of a brand inside it. Our responsibility isn't just protecting a product; it's delivering an unforgettable unboxing experience."

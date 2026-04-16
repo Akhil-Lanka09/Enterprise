@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Package } from "lucide-react";
+import { Menu, X, Package, ShoppingCart } from "lucide-react";
+import { useCart } from "../../context/CartContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const { getCartCount } = useCart();
+  const cartCount = getCartCount();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -39,7 +42,7 @@ export default function Navbar() {
             <Package className="text-white w-5 h-5" />
           </div>
           <span className="font-display text-xl font-bold text-text tracking-tight">
-            The Box Hub
+            SVK PACKAGING
           </span>
         </Link>
 
@@ -61,18 +64,36 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Link to="/contact" className="btn-primary py-2.5 px-6 text-sm">
+          <a href="https://wa.me/911234567890?text=Hello SVK PACKAGING, I would like to get a quote for packaging boxes." target="_blank" rel="noreferrer" className="btn-primary py-2.5 px-6 text-sm">
             Get Quote
+          </a>
+          <Link to="/cart" className="relative text-text hover:text-brown transition-colors">
+            <ShoppingCart size={24} />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-brown text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                {cartCount}
+              </span>
+            )}
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-brown"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {/* Mobile Menu & Cart */}
+        <div className="md:hidden flex items-center gap-4">
+          <Link to="/cart" className="relative text-brown">
+            <ShoppingCart size={24} />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-brown text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                {cartCount}
+              </span>
+            )}
+          </Link>
+          <button
+            className="p-2 text-brown"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}
@@ -101,13 +122,14 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              <Link
-                to="/contact"
+              <a
+                href="https://wa.me/911234567890?text=Hello SVK PACKAGING, I would like to get a quote for packaging boxes."
+                target="_blank" rel="noreferrer"
                 onClick={() => setMenuOpen(false)}
                 className="btn-primary w-full text-center mt-5 py-3.5"
               >
                 Get Quote
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

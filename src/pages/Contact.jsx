@@ -72,8 +72,8 @@ export default function Contact() {
           >
             {[
               { icon: Phone, title: "Call Us", info: "+91 98765 43210", sub: "Mon–Sat, 9am–7pm" },
-              { icon: Mail, title: "Email Us", info: "hello@theboxhub.in", sub: "Reply within 4 hours" },
-              { icon: MapPin, title: "Visit Us", info: "Vissannapeta, AP", sub: "521215" },
+              { icon: Mail, title: "Email Us", info: "hello@svkpackaging.in", sub: "Reply within 4 hours" },
+              { icon: MapPin, title: "Visit Us", info: "Viravalli, Andhra Pradesh", sub: "Manufacturer" },
             ].map((item) => (
               <motion.div
                 key={item.title}
@@ -179,7 +179,7 @@ export default function Contact() {
                 {[
                   { label: "WhatsApp", val: "+91 98765 43210", icon: FaWhatsapp },
                   { label: "Call Direct", val: "+91 98765 43210", icon: Phone },
-                  { label: "Email", val: "hello@theboxhub.in", icon: Mail },
+                  { label: "Email", val: "hello@svkpackaging.in", icon: Mail },
                   { label: "Working Hours", val: "Mon–Sat, 9am–7pm", icon: Clock }
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-4 p-4 bg-white rounded-xl border border-[#E0D5C8]">

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Package, ShieldCheck, Award, Truck, Leaf } from "lucide-react";
+import { ArrowRight, Package, ShieldCheck, Award, Truck, Leaf, Droplet, Settings, Sparkles, Wind, Layers } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 const fadeUp = {
@@ -84,9 +84,9 @@ export default function Home() {
               Crafting strong, beautiful, and custom-designed carton boxes for food brands, e-commerce, gifting, and more. Built to protect. Designed to impress.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }} className="flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-primary">
+              <a href="https://wa.me/911234567890?text=Hello SVK PACKAGING, I would like to get a custom packaging quote." target="_blank" rel="noreferrer" className="btn-primary">
                 Get a Free Quote
-              </Link>
+              </a>
               <a href="https://wa.me/911234567890" target="_blank" rel="noreferrer" className="btn-outline flex items-center gap-2">
                 <FaWhatsapp size={18} /> WhatsApp Us
               </a>
@@ -141,13 +141,13 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {[
-              { title: "Food Boxes", desc: "Hygienic, food-grade carton boxes for bakeries, restaurants, and brands.", img: "/images/cat_food_1776242671878.png" },
-              { title: "Bottle Boxes", desc: "Sturdy carriers for beverages, oils, and premium liquid products.", img: "/images/cat_bottle_1776243453767.png" },
+              { title: "Food Boxes", desc: "Hygienic, food-grade carton boxes for bakeries, restaurants, and brands.", img: "/images/food_grade_boxes.png" },
+              { title: "Bottle Boxes", desc: "Sturdy carriers for beverages, oils, and premium liquid products.", img: "/images/bottle_boxes_tall.png" },
               { title: "Shipping Boxes", desc: "Corrugated, double-wall boxes built for safe e-commerce logistics.", img: "/images/cat_shipping_1776242687272.png" },
-              { title: "Gift Boxes", desc: "Elegant, customizable gift packaging for retail and premium brands.", img: "/images/cat_gift_1776242702728.png" },
+              // { title: "Gift Boxes", desc: "Elegant, customizable gift packaging for retail and premium brands.", img: "/images/cat_gift_1776242702728.png" },
             ].map((cat) => (
               <motion.div
                 key={cat.title}
@@ -178,7 +178,7 @@ export default function Home() {
             className="text-center mb-14"
           >
             <span className="tag mb-4">Why Us</span>
-            <h2 className="font-display text-[clamp(28px,4vw,44px)] font-bold text-text">The Box Hub Advantage</h2>
+            <h2 className="font-display text-[clamp(28px,4vw,44px)] font-bold text-text">SVK PACKAGING Advantage</h2>
           </motion.div>
 
           <motion.div
@@ -208,7 +208,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Who We Serve */}
+      {/* Clientele & Who We Serve */}
       <section className="section-pad bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
@@ -216,10 +216,53 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
-            className="text-center mb-14"
+            className="text-center mb-10"
           >
-            <span className="tag mb-4">Clientele</span>
-            <h2 className="font-display text-[clamp(28px,4vw,44px)] font-bold text-text">Who We Serve</h2>
+            <span className="tag mb-4">Our Clientele</span>
+            <h2 className="font-display text-[clamp(28px,4vw,44px)] font-bold text-text">Trusted by Top Companies</h2>
+          </motion.div>
+
+          {/* Enterprise Clients Text Cloud */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-wrap justify-center items-center gap-x-12 md:gap-x-20 gap-y-12 mb-24 px-4 max-w-5xl mx-auto"
+          >
+            {[
+              { name: "PMK", color: "text-[#2A2A2A]", className: "font-sans font-black tracking-tighter text-4xl" },
+              { name: "NSL", color: "text-[#1E3A8A]", className: "font-serif italic font-bold text-4xl" },
+              { name: "Vijaya Dairy", icon: Droplet, color: "text-[#0284C7]", className: "font-display font-bold text-[28px] tracking-tight flex items-center gap-2" },
+              { name: "Kumar Pumps", icon: Settings, color: "text-[#334155]", className: "font-sans font-extrabold text-[24px] uppercase tracking-tighter flex items-center gap-1.5" },
+              { name: "Anu Sweets", icon: Sparkles, color: "text-[#EA580C]", className: "font-serif font-semibold text-[28px] flex items-center gap-2" },
+              { name: "Premium Fans", icon: Wind, color: "text-[#0F172A]", className: "font-display font-medium text-[22px] tracking-widest uppercase flex items-center gap-2" },
+              { name: "Priya Pickles", icon: Leaf, color: "text-[#BE123C]", className: "font-serif font-bold text-[28px] flex items-center gap-1.5" },
+              { name: "Mohan Spintex", icon: Layers, color: "text-[#4338CA]", className: "font-sans font-bold text-[22px] tracking-tight uppercase flex items-center gap-2" }
+            ].map((client, i) => {
+              const Icon = client.icon;
+              return (
+                <div key={i} className="group relative flex items-center justify-center cursor-default grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                  <div className={`${client.className} ${client.color}`}>
+                    {Icon && <Icon size={32} strokeWidth={2.5} className="mb-1 text-current flex-shrink-0" />}
+                    <span>{client.name}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={fadeUp}
+            className="text-center mb-12"
+          >
+            <h3 className="font-display text-2xl font-bold text-text">Empowering Start-ups</h3>
+            <p className="text-text-muted mt-3 max-w-2xl mx-auto text-[15px]">
+              We also design highly specialized, premium customized packaging for start-ups looking to scale globally.
+            </p>
           </motion.div>
 
           <motion.div
@@ -227,22 +270,22 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {[
-              { title: "Small Businesses", icon: "🏪", desc: "Affordable MOQ starting at 50 boxes" },
-              { title: "Food Brands", icon: "🍱", desc: "Food-safe certified packaging" },
-              { title: "eCommerce Sellers", icon: "🛒", desc: "Bulk corrugated shipping solutions" },
-              { title: "Startups", icon: "🚀", desc: "Branding-ready custom print boxes" },
+              { title: "Leather Box Export", icon: "👜", desc: "Luxury, robust packaging built for premium leather goods." },
+              { title: "Clothing Export", icon: "👗", desc: "Durable corrugated boxes for international apparel shipping." },
+              { title: "Food Grade", icon: "🍱", desc: "Hygienic, certified safe packaging for food start-ups." },
+              { title: "Premium Gifting", icon: "🎁", desc: "Luxurious custom finishes for boutique gifting brands." },
             ].map((item) => (
               <motion.div
                 key={item.title}
                 variants={fadeUp}
-                className="card-hover border-[1.5px] border-[#E0D5C8] rounded-xl p-7 text-center"
+                className="card-hover border-[1.5px] border-[#E0D5C8] bg-[#FAF7F2] rounded-xl p-8 text-center"
               >
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <h3 className="text-[15px] font-bold text-text mb-2">{item.title}</h3>
-                <p className="text-[13px] text-text-muted">{item.desc}</p>
+                <div className="text-[40px] mb-4">{item.icon}</div>
+                <h3 className="text-[16px] font-bold text-text mb-2.5">{item.title}</h3>
+                <p className="text-[14px] text-text-muted leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -262,9 +305,9 @@ export default function Home() {
           <p className="text-white/80 text-[17px] mb-9 leading-relaxed">
             Tell us your box dimensions, print requirements, and quantity — we'll craft it perfectly.
           </p>
-          <Link to="/contact" className="btn-white flex items-center gap-2">
+          <a href="https://wa.me/911234567890?text=Hello SVK PACKAGING, I would like to get a custom packaging quote for bulk orders." target="_blank" rel="noreferrer" className="btn-white flex items-center gap-2">
             Get Free Quote Today <ArrowRight size={18} />
-          </Link>
+          </a>
         </motion.div>
       </section>
 

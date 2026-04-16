@@ -13,14 +13,30 @@ const staggerContainer = {
 };
 
 export default function Customization() {
-  const [form, setForm] = useState({ name: "", phone: "", requirement: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [activeSizeTab, setActiveSizeTab] = useState("Shipping Boxes");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (form.name && form.phone && form.requirement) {
-      setSubmitted(true);
-    }
+  const handleWhatsApp = () => {
+    window.open('https://wa.me/911234567890?text=Hello SVK PACKAGING, I would like to get a custom packaging quote.', '_blank');
+  };
+
+  const standardBoxes = {
+    "Shipping Boxes": [
+      "3.5 x 3.5 x 3.5", "4 x 4 x 3", "4 x 4 x 4", "4.5 x 4.5 x 2", "5 x 4 x 2.5", 
+      "5 x 4 x 3.5", "5 x 5 x 5", "6 x 3 x 3", "6 x 5 x 2", "6 x 6 x 6", 
+      "7 x 7 x 7", "7 x 4 x 2", "7 x 4 x 3.5", "7 x 5.25 x 4.25", "7.5 x 4.5 x 3.5", 
+      "8 x 8 x 3", "8 x 5 x 3.5", "8 x 5 x 2", "8 x 4 x 4", "8 x 4 x 8", 
+      "9 x 7.5 x 4.5", "9 x 6 x 3", "9 x 6 x 4", "9 x 6 x 6", "10 x 4.5 x 3.5", 
+      "11 x 6 x 5", "12 x 4 x 4", "12 x 10 x 8", "12 x 8 x 4", "12 x 8 x 8", 
+      "12 x 11 x 6", "12 x 11 x 9", "15 x 11 x 9"
+    ],
+    "Brown / White Flap Box Sizes": [
+      "4 x 4 x 1.5", "4.5 x 3 x 1", "5 x 2 x 2", "6 x 5 x 2", "6 x 5 x 1.5", 
+      "7 x 4 x 2.5", "8 x 5 x 2", "8 x 5 x 3", "10 x 7 x 3.5", "11 x 6 x 5", 
+      "12 x 4 x 3", "12 x 10 x 8", "12 x 8 x 4", "12 x 11 x 6", "13 x 9 x 2", "14 x 13 x 2.5"
+    ],
+    "White Shipping Box Sizes": [
+      "5 x 3.5 x 4", "5 x 4 x 2.5", "7 x 4 x 2.5", "7 x 4 x 3.5", "8 x 5 x 2", "9.5 x 6 x 3.5"
+    ]
   };
 
   const steps = [
@@ -116,6 +132,72 @@ export default function Customization() {
         </div>
       </section>
 
+      {/* Standard Sizes Chart */}
+      <section className="px-6 pb-20">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="bg-white rounded-3xl p-8 md:p-12 border border-[#E0D5C8] shadow-soft flex flex-col items-center"
+          >
+            <div className="text-center mb-10">
+              <span className="bg-[#F0E8DC] text-brown px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3 inline-block">Standard Sizes</span>
+              <h2 className="font-display text-[32px] md:text-[40px] font-bold text-text mb-4">
+                Ready-to-Order Dimensions
+              </h2>
+              <p className="text-text-muted text-[16px] leading-[1.7] max-w-xl mx-auto">
+                Need something right away? We manufacture these standard sizes with a <strong className="text-brown">Minimum Order Quantity of just 50 boxes</strong>.
+              </p>
+            </div>
+
+            {/* Tabs */}
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
+              {Object.keys(standardBoxes).map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveSizeTab(category)}
+                  className={`px-6 py-3 rounded-full text-[15px] font-bold transition-all border-2 ${
+                    activeSizeTab === category
+                      ? "border-brown bg-brown text-white shadow-md"
+                      : "border-[#E0D5C8] bg-white text-text hover:border-brown/50"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+
+            {/* Sizes Grid */}
+            <motion.div 
+              key={activeSizeTab}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4 w-full"
+            >
+              {standardBoxes[activeSizeTab].map((size, index) => (
+                <div 
+                  key={index} 
+                  className="bg-[#FAF7F2] border border-[#E0D5C8]/70 rounded-xl p-3.5 text-center font-bold text-text text-[15px] hover:border-brown hover:shadow-sm transition-all cursor-default"
+                >
+                  {size}
+                </div>
+              ))}
+            </motion.div>
+
+            <div className="mt-12 text-center w-full max-w-md">
+              <button 
+                onClick={() => window.open(`https://wa.me/911234567890?text=Hello SVK PACKAGING, I am interested in ordering standard sizes (${activeSizeTab}) with MOQ 50.`, '_blank')} 
+                className="btn-outline w-full py-3.5 border-brown text-brown font-bold text-[15px] hover:bg-brown hover:text-white transition-colors flex items-center justify-center gap-2"
+              >
+                Order {activeSizeTab} on WhatsApp
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Form */}
       <section className="section-pad bg-beige">
         <div className="max-w-2xl mx-auto px-6">
@@ -137,55 +219,14 @@ export default function Customization() {
             transition={{ duration: 0.6 }}
             className="bg-white rounded-3xl p-8 md:p-10 shadow-soft"
           >
-            {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-10"
-              >
-                <CheckCircle2 size={72} className="text-green-500 mx-auto mb-6" />
-                <h3 className="font-display text-[26px] font-bold text-text mb-3">Request Received!</h3>
-                <p className="text-text-muted leading-[1.7] max-w-sm mx-auto">
-                  Our team will contact you within 24 hours with a personalized quote for your custom packaging.
-                </p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                <div>
-                  <label className="text-[14px] font-semibold text-text block mb-2">Your Name *</label>
-                  <input
-                    required
-                    className="form-input"
-                    placeholder="e.g. Priya Sharma"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <label className="text-[14px] font-semibold text-text block mb-2">Phone Number *</label>
-                  <input
-                    required
-                    className="form-input"
-                    placeholder="+91 98765 43210"
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <label className="text-[14px] font-semibold text-text block mb-2">Your Requirement *</label>
-                  <textarea
-                    required
-                    className="form-input min-h-[120px] resize-y"
-                    placeholder="Describe box size, quantity, material, print design..."
-                    value={form.requirement}
-                    onChange={(e) => setForm({ ...form, requirement: e.target.value })}
-                  />
-                </div>
-                <button type="submit" className="btn-primary w-full py-4 mt-2 text-[16px]">
-                  Submit Request
-                </button>
-              </form>
-            )}
+            <div className="flex flex-col items-center justify-center py-6 text-center">
+              <p className="text-text-muted leading-[1.7] max-w-sm mx-auto mb-8">
+                Skip the web forms! Send us your exact dimensions, material preferences, and quantity directly on WhatsApp for an instant custom quote.
+              </p>
+              <button onClick={handleWhatsApp} className="btn-primary w-full py-4 text-[16px] flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] border-none shadow-md">
+                Chat on WhatsApp Now
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>
